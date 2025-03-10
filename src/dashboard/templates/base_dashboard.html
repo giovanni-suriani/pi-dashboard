@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Dashboard Instituições</title>
+    <link rel="stylesheet" href="{% static 'css/styleguide.css' %}" />
+    {% if css_file %}
+      <link rel="stylesheet" href="{% static css_file %}" />
+    {% endif %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  </head>
+  {% comment %} <body style="transform: scale(1.1); transform-origin:center"> {% endcomment %}
+  <body>
+    <!-- Filter by -->
+    {% if panel_name == "MULTI-INSTITUIÇÃO" %}
+      {% block content %}
+
+      {% endblock %}
+    {% endif %}
+    
+    <div class="main-flexbox">
+      <div class="first-row-layout">
+        <h1>Análise geral PI's: <span id="panel-name">{{panel_name}}</span></h1>
+        {% if panel_name == "MULTI-INSTITUIÇÃO" %}
+          <div class="filter-icon">
+            <i id="filter-by-icon" class="fas fa-filter"></i>
+          </div>
+        {% endif %}
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+      <div class="pis-attributes">
+        {% for key, value in pis_count.items %}
+          <div class="blob-box">
+            <h1 class="text-wrapper-1">{{ key }}</h1>
+            <p class="text-wrapper-2 center-text">{{ value }}</p>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="third-layout">
+        <div class="big-view">
+          <div class="blob-box">
+            <!-- 780 x 485 -->
+            <!-- Rolo de passagem de imagem -->
+            <!-- Trocar para algo dinamico aqui com streamlit -->
+            <div class="visualizacao-grafica">
+              <div id="grafico" >
+                <iframe  {%if chart == "default"%} src="{% static 'chart_storage/pisGrafico/pisGrafico.html' %}"{% endif %} width="650px" height="350px" frameborder="0" scrolling="no"></iframe>
+              </div>
+              <div id="wordcloud" >
+                <img {% if chart == "default" %} src="{% static 'chart_storage/wordcloud_images/wordcloud.png' %}" {% endif %} title="Palavras Chave das Pis" alt="graph" width="700" height="350" />
+              </div>
+            </div>
+            <div class="slider-nav">
+              <a id="view-snap1"></a>
+              <a id="view-snap2"></a>
+            </div>
+          </div>
+        </div>
+        <div class="titulares-inventores">
+          <div class="blob-box">
+            <div id="titulares">
+              <header>
+                <p>Top 10 Titulares</p>
+              </header>
+              <table class="table-layout">
+                {% if top_titulares %}
+                  <tr>
+                    <td>
+                      <span class="special-entity">#1</span>
+                    </td>
+                    <td class="entity">{{top_titulares.0.pessoa__nome}}</td>
+                    <td>{{top_titulares.0.qtde_pis_publicadas}}</td>
+                  </tr>
+                  {% for titular in top_titulares|slice:'1:' %}
+                    <tr>
+                      <td>#{{ forloop.counter|add:'1' }}</td>
+                      <td class="entity">{{ titular.pessoa__nome }}</td>
+                      <td>{{ titular.qtde_pis_publicadas }}</td>
+                    </tr>
+                  {% endfor %}
+                {% else %}
+                <tr>
+                  <td colspan="3" class="center-text">Nenhum titular encontrado</td>
+                </tr>
+                {% endif %}
+              </table>
+            </div>
+          </div>
+          <div class="blob-box">
+            <div id="inventores">
+              <header>
+                <p>Top 10 Inventores</p>
+              </header>
+              <table class="table-layout">
+                {% if top_inventors %}
+                  <tr>
+                    <td>
+                      <span class="special-entity">#1</span>
+                    </td>
+                    <td class="entity">{{top_inventors.0.pessoa__nome}}</td>
+                    <td>{{top_inventors.0.qtde_pis_publicadas}}</td>
+                  </tr>
+                  {% for inventor in top_inventors|slice:'1:' %}
+                    <tr>
+                      <td>#{{ forloop.counter|add:'1' }}</td>
+                      <td class="entity">{{ inventor.pessoa__nome }}</td>
+                      <td>{{ inventor.qtde_pis_publicadas }}</td>
+                    </tr>
+                  {% endfor %}
+                {% else %}
+                  <tr>
+                    <td colspan="3" class="center-text">Nenhum Inventor encontrado</td>
+                  </tr>
+                {% endif %}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="parameters" method="GET" urlPisChart="{% url 'graph_data' %}" style="display: none;"></div>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% if chart == "custom" %}
+      <script>
+       {% comment %}  $("#grafico iframe").attr("src", html_src).css("visibility", "hidden")
+        $("#wordcloud img").attr("src", png_src).css("visibility", "hidden") {% endcomment %}
+        const pisDataset = JSON.stringify({{pis_dataset|safe}})
+        const wordcloudDataset = JSON.stringify({{wordcloud_dataset|safe}})
+        var instituicoes = JSON.stringify({{instituicoes|safe}})
+        {% comment %} console.log(`Instituicoes: ${instituicoes}\n pis_dataset = ${pisDataset}\n wordcloud_dataset = ${wordcloudDataset}`) {% endcomment %}
+        makingCharts(wordcloudDataset, pisDataset, instituicoes)
+      </script>
+    {% endif %}
+  </body>
+</html>
+

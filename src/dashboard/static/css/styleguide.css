@@ -1,0 +1,80 @@
+:root {
+    --collection-1-lblue: rgba(0, 255, 252, 1);
+    --collection-1-mblue: rgba(0, 178, 255, 1);
+    --collection-1-hblue: rgba(0, 98, 255, 1);
+    --collection-1-lgreen: rgba(13, 255, 169, 1);
+    --collection-1-hgreen: rgba(15, 255, 88, 1);
+    --collection-1-foreground: rgba(240, 240, 240, 1);
+    --m3-state-layers-on-surface-opacity-08: rgba(29, 27, 32, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(29, 27, 32, 0.12);
+    /* --main-flexbox-margin-left: 13.3%; */
+    /* --main-flexbox-margin-right: 18%; */
+    /* --main-flexbox-margin-right: 260px; */
+    --main-flexbox-margin-top: 4.5vh;
+    --main-flexbox-gap: 6vh; /* 7vh */
+    --table-border-spacing-horizontal: 24px;
+    --table-border-spacing-vertical: 9px;
+    --form-field-horizontal-padding: 10px;
+    --form-field-select-height: 30px;
+    --form-field-select-padding: 5px;
+    --form-field-initial-gap: -5px;
+    --form-field-gap-between-items: 20px;
+    --test-color: white;
+    /* 
+    --test-color:rgb(188, 241, 89); 
+    
+    */
+  }
+  
+  /*
+  
+  To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+  
+  <body data-m3-mode="light">
+      <!-- the rest of your content -->
+  </body>
+  
+  You can apply the theme on any DOM node, not just the `body`
+  
+  */
+  
+  [data-m3-mode="light"] {
+    --m3-state-layers-on-surface-opacity-08: rgba(29, 27, 32, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(29, 27, 32, 0.12);
+  }
+  
+  [data-m3-mode="light-high-contrast"] {
+    --m3-state-layers-on-surface-opacity-08: rgba(0, 0, 0, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(0, 0, 0, 0.12);
+  }
+  
+  [data-m3-mode="light-medium-contrast"] {
+    --m3-state-layers-on-surface-opacity-08: rgba(29, 27, 32, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(29, 27, 32, 0.12);
+  }
+  
+  [data-m3-mode="dark"] {
+    --m3-state-layers-on-surface-opacity-08: rgba(230, 224, 233, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(230, 224, 233, 0.12);
+  }
+  
+  [data-m3-mode="dark-high-contrast"] {
+    --m3-state-layers-on-surface-opacity-08: rgba(255, 255, 255, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(255, 255, 255, 0.12);
+  }
+  
+  [data-m3-mode="dark-medium-contrast"] {
+    --m3-state-layers-on-surface-opacity-08: rgba(255, 249, 255, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(255, 249, 255, 0.12);
+  }
+  
+  [data-m3-mode="monochrome-light"] {
+    --m3-state-layers-on-surface-opacity-08: rgba(27, 27, 27, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(27, 27, 27, 0.12);
+  }
+  
+  [data-m3-mode="monochrome-dark"] {
+    --m3-state-layers-on-surface-opacity-08: rgba(226, 226, 226, 0.08);
+    --m3-state-layers-on-surface-opacity-12: rgba(226, 226, 226, 0.12);
+  }
+  

@@ -1,0 +1,14 @@
+.env
+debug.log
+*backup
+*test_scripts
+README copy.md
+.vscode
+env
+/src/dashboard/giovanni-tests/
+giovanni-tests/*
+run_pis_dashboard_tasks.sh
+/src/dashboard/static/chart_storage/pisGrafico/*
+/src/dashboard/static/chart_storage/wordcloud_images/*
+cron_output.log
+.prettierrc

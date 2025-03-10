@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter-Regular", Helvetica;
+}
+
+body {
+  display: flex;
+  background-color: var(--collection-1-foreground);
+  z-index: 1000;
+  /* justify-content: center; */
+}
+
+/* .mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(86, 86, 28, 0.95);
+  z-index: 1000;
+  display: none;
+} */
+
+/* || Utility Classes */
+.notext-decoration {
+  text-decoration: none;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/*ligando a cobrar*/
+
+
+.blob-box {
+  background-color: white;
+  box-shadow: 0px 4px 4px #00000040;
+  border-radius: 10px;
+}
+
+body{
+  max-height: 1080px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: flex;
+  /* align-items: center; */
+}
+
+.main-flexbox {
+  display: flex;
+  flex-flow: column;
+  width: 1260px;
+  /* height: 785px; */ /* var(--main-flexbox-margin-top + 900px); */
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 7px;
+  margin-top: var(--main-flexbox-margin-top);
+  margin-left: auto;
+  margin-right: auto;
+  gap: var(--main-flexbox-gap);
+  overflow-y: hidden;
+}
+
+.first-row-layout {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.first-row-layout .filter-icon {
+  font-size: 36px;
+  color: #222;
+  opacity: 0.7;
+  transition: opacity ease 250ms;
+}
+
+.filter-icon:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.first-row-layout .menu-icon {
+  font-size: 36px;
+  margin-left: auto;
+}
+
+.menu-icon:hover {
+  cursor: pointer;
+}
+
+.first-row-layout h1 {
+  align-items: center;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 40px;
+  color: #1c1c1c;
+}
+
+.first-row-layout h1 span {
+  color: var(--collection-1-hblue);
+}
+
+.pis-attributes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pis-attributes .blob-box {
+  display: flex;
+  flex-flow: column;
+  height: 156px;
+  width: 266px;
+}
+
+.pis-attributes .blob-box .text-wrapper-1 {
+  margin: 10% 10% 7.5% 10%;
+  font-weight: 600;
+  color: hsla(0, 0%, 0%, 0.8);
+  font-size: 18px;
+}
+
+.pis-attributes .blob-box .text-wrapper-2 {
+  font-weight: 400;
+  color: var(--collection-1-hblue);
+  font-size: 50px;
+}
+
+.third-layout {
+  display: flex;
+  justify-content: space-between;
+  /* padding-bottom: 10px;
+  padding-left: 10px; */
+}
+
+.big-view .blob-box {
+  width: 780px;
+  height: 450px;
+  /* 15janeiro margin-bottom: 40px; */
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* justify-content: flex-end; */
+}
+
+.visualizacao-grafica {
+  margin-top: 5%;
+  margin-left: 5%;
+  /* margin-bottom: auto; */
+  display: flex;
+  width: 700px;
+  height: 400px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.visualizacao-grafica grafico {
+  margin-top: 10%;
+  width: 600px;
+  height: 400px;
+}
+
+.visualizacao-grafica div {
+  scroll-snap-align: start;
+  /* min-width: 0%;  */
+  flex-shrink: 0; /* nao ha shrink ! */
+  flex-basis: 100%;
+  /* transform: translateX(-50%); */
+}
+
+.slider-nav {
+  display: flex;
+  gap: 32px;
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+.slider-nav a {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.5;
+  transition: opacity ease 250ms;
+}
+
+.slider-nav a:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.titulares-inventores {
+  display: flex;
+  flex-flow: column;
+  gap: 35px;
+}
+
+.titulares-inventores .blob-box {
+  width: 407px;
+  height: 208px;
+  font-weight: 600;
+  color: #000000;
+  font-size: 18px;
+  overflow-y: scroll;
+  /* overflow-x: auto; */
+}
+
+.titulares-inventores .blob-box::-webkit-scrollbar {
+  width: 7px; /* Width of the scrollbar */
+}
+
+.titulares-inventores .blob-box::-webkit-scrollbar-thumb {
+  background: rgb(200, 200, 200); /* Color of the scrollbar thumb */
+  transition: background 1s ease;
+}
+
+.titulares-inventores .blob-box::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb on hover */
+}
+
+.titulares-inventores header {
+  margin-top: 23px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: auto auto;
+  background: linear-gradient(
+    180deg,
+    rgb(141.36, 246.86, 196.22) 0%,
+    rgb(133.03, 255, 181.82) 100%
+  );
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  width: 160px;
+  height: 42px;
+}
+
+.titulares-inventores header p {
+  margin: auto auto;
+}
+
+.table-layout {
+  margin-top: calc(14px - var(--table-border-spacing-vertical)); /* 14px */
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+  border-spacing: var(--table-border-spacing-horizontal)
+    var(--table-border-spacing-vertical);
+  /*   border-spacing: var(--table-border-spacing); */ /* Set 5px vertical spacing between rows */
+  /* border-collapse: collapse; */
+  /*  border-collapse: separate; /*  Ensure spacing between rows is visible  */
+  /*  overflow-y: hidden;
+  overflow-x: auto; */
+}
+
+.table-layout .entity {
+  width: 177px;
+}
+
+.table-layout td {
+  background-clip: padding-box;
+  margin-bottom: 7px;
+  word-wrap: break-word;
+  text-align: center;
+  width: 57px;
+}
+
+.table-layout > td + td {
+  border-left-width: 10px;
+}
+
+.table-layout tr + tr > td {
+  border-top-width: 10px;
+}
+
+.table-layout .special-entity {
+  display: block;
+  border-radius: 10px;
+  height: 22px;
+  background-color: #edff81;
+}

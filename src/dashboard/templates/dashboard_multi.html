@@ -1,0 +1,43 @@
+{% extends 'base_dashboard.html' %}
+{% block content %}
+  <div id="filter-by" style="display: none;">
+    <div class="mask"></div>
+    <div class="blob-box">
+      <i class="fas fa-times exit-icon"></i>
+      <h2>Filtrar por:</h2>
+      <div class="filtering-layout">
+        <form class="form-filter" action="{% url 'new_results' %}" method="post">
+          {% csrf_token %}
+          <div class="div-form-layout">
+            <!-- Instituicao Field -->
+            <h3>Instituicoes Responsaveis</h3>
+            <div class="div-form-field" id="campi">
+              <div class="left">
+                {% for instituicao in instituicao_left %}
+                  <div class="input-label-wrapper">
+                    <label>{{ instituicao }}</label>
+                    <input type="checkbox" name="{{ instituicao }}" />
+                  </div>
+                {% endfor %}
+              </div>
+
+              <div class="right">
+                {% for instituicao in instituicao_right %}
+                  <div class="input-label-wrapper">
+                    <label>{{ instituicao }}</label>
+                    <input type="checkbox" name="{{ instituicao }}" />
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-submit">
+            <button type="submit">Filtrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
